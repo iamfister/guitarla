@@ -7,7 +7,10 @@ import Header from "./components/Header";
 import Guitar from "./components/Guitar";
 
 function App() {
+
   const [data, setData] = useState(db); // only local
+  const [cart, setCart] = useState([])
+
 
   return (
     <>
@@ -18,7 +21,7 @@ function App() {
 
         <div className="row mt-5">
           {data.map((p) => (
-            <Guitar key={p.id} guitar={p} />
+            <Guitar key={p.id} guitar={p} setCart={setCart} />
           ))}
         </div>
       </main>
