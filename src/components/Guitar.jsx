@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-const Guitar = ({ guitar, setCart }) => {
+const Guitar = ({ guitar, addCart }) => {
   const { id, name, image, description, price } = guitar;
 
   return (
@@ -15,7 +15,7 @@ const Guitar = ({ guitar, setCart }) => {
         <h3 className="text-black fs-4 fw-bold text-uppercase">{name}</h3>
         <p>{description}</p>
         <p className="fw-black text-primary fs-3">${price}</p>
-        <button type="button" className="btn btn-dark w-100" onClick={() => setCart(prevCart => [...prevCart, guitar])}>
+        <button type="button" className="btn btn-dark w-100" onClick={() => addCart(guitar)}>
           Agregar al Carrito
         </button>
       </div>

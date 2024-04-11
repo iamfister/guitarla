@@ -7,10 +7,22 @@ import Header from "./components/Header";
 import Guitar from "./components/Guitar";
 
 function App() {
-
   const [data, setData] = useState(db); // only local
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState([]);
 
+  function addToCart(item) {
+    const itemExist = cart.findIndex((guitar) => guitar.id == item.id);
+
+    if (itemExist >= 0) {
+      console.log("el elemento ya existe");
+      const updateCart = [...cart]
+      updateCart[itemExist].quantity++
+      setCart(updateCart)
+    } else {
+      item.quantity = 1;
+      setCart([...cart, item]);
+    }
+  }
 
   return (
     <>
@@ -21,7 +33,7 @@ function App() {
 
         <div className="row mt-5">
           {data.map((p) => (
-            <Guitar key={p.id} guitar={p} setCart={setCart} />
+            <Guitar key={p.id} guitar={p} addCart={addToCart} />
           ))}
         </div>
       </main>
